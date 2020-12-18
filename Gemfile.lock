@@ -61,6 +61,8 @@ GEM
     bcrypt (3.1.16)
     bcrypt (3.1.16-java)
     bindex (0.8.1)
+    binding_of_caller (0.7.3)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
     bootsnap (1.5.1-java)
@@ -79,6 +81,7 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    debug_inspector (0.0.3)
     erubi (1.10.0)
     ffi (1.13.1)
     ffi (1.13.1-java)
@@ -88,6 +91,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    javascript (0.0.2)
+      binding_of_caller (~> 0.7.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     libv8 (3.16.14.19)
@@ -242,6 +247,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  javascript
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pry
