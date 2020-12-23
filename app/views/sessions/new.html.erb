@@ -1,6 +1,8 @@
-<h1>Sign Up</h1>
+<h1>Login</h1>
 
-<%= form_for(@user, url:'/signup') do |f| %>
+<%= flash[:message] if flash[:message]%>
+
+<%= form_for :user do |f| %>
 
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -9,6 +11,6 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.submit "Signup" %>
+  <%= f.submit "Login" %>
 
 <% end %>
