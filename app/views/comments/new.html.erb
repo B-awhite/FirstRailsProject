@@ -1,0 +1,34 @@
+<% if @comment.destination %>
+<h1>New Comment being added <%=@comment.destination.location%>!</h1>
+<% else %>
+<h1> New Comment </h1>
+<% end %>
+
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+    <ul>
+      <% @comment.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@comment.destination,@comment]) do |f| %>
+
+ <% if !@comment.destination %>
+   <%= f.label :destination %>
+   <%= f.collection_select :destination_id, Destination.all, :id, :location %>
+ <% else %>
+   <%= f.hidden_field :destination_id %>
+ <% end %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <% f.submit %>
+
+<% end %>  

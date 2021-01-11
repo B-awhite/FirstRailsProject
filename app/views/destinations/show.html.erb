@@ -1,0 +1,12 @@
+<h1><%= @destination.location %></h1>
+<h2><%= @destination.city </h2>
+
+<div>Added by: <%=@destination.user.username%></div>
+
+<p><%= link_to 'All Comments', destination_comments_path(@destination)%></p>
+<p><%= link_to 'Add new Comment', new_destination_comment_path(@destination)%></p>
+
+<h4>Comments:</h4>
+<% @destination.comments.each do |c| %>
+  <li><%= c.user.username%> commented "<%= link_to c.content, destination_comment_path(@destination, c)%>" </li>
+<% end %>
