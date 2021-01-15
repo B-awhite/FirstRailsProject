@@ -1,6 +1,6 @@
 # Description 
 
-This app allows users to signup/login and make a list of different places. User also have the option to make comments on other users destinations.
+This app allows users to signup/login and make a list of different places. A user also has the option to make comments on destinations that other users have created.
 
 ## Installation 
 
