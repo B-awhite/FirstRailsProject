@@ -6,18 +6,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if params[:user][:username].empty? || params[:user][:password].empty?
-      @error = "Username and password must be filled"
-      render :new
-    else 
-      if @user.save
+     if @user.save
         session[:user_id] = @user.id 
         redirect_to @user
-      else 
-        @error = "Username not available"
+     else 
         render :new
-      end
-    end 
+     end
   end 
 
   def show

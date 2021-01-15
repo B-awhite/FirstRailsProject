@@ -1,5 +1,6 @@
 class DestinationsController < ApplicationController
    before_action :if_not_logged_in_redirect
+   before_action :finding_user, only: [:new, :index]
 
    def new 
      if params[:user_id] && @user = User.find_by_id(params[:user_id])
@@ -27,14 +28,14 @@ class DestinationsController < ApplicationController
       end 
    end 
 
-   def index
-     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-        @destinations = @user.destinations
-     else 
-        @error = "Destination not found" if params[:user_id]
-        @destinations = Destination.all 
-     end 
-   end  
+   # def index
+   #   if params[:user_id] && @user = User.find_by_id(params[:user_id])
+   #      @destinations = @user.destinations
+   #   else 
+   #      @error = "Destination not found" if params[:user_id]
+   #      @destinations = Destination.all 
+   #   end 
+   # end  
 
    def show 
       @destination = Destination.find_by_id(params[:id])
@@ -46,4 +47,10 @@ class DestinationsController < ApplicationController
    def destination_params
       params.require(:destination).permit(:location, :city)
    end 
+
+   def finding_user
+     if params[:user_id] && @user = User.find_by_id(params[:user_id])
+     end 
+   end 
+
 end

@@ -1,1 +1,15 @@
 <h1>Edit <%= @destination.location%></h1>
+
+<%= render partial: "/layouts/errors", locals: {object: @destination} %>
+
+<%= form_for(@destination) do |f| %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.submit %>
+
+<% end %>

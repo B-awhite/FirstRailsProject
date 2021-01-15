@@ -1,1 +1,12 @@
-<h1>Edit</h1>
+<h1>Edit comment</h1>
+
+<%= render partial: "/layouts/errors", locals: {object: @comment} %>
+
+<%= form_for(@comment) do |f|%>
+
+  <%= f.label :destination %>
+  <%= f.collection_select :destination_id, Destination.all, :id, :location %>
+
+  <%= f.submit %>
+
+<% end %>
