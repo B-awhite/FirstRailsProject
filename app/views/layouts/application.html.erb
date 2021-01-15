@@ -15,11 +15,10 @@
      <% if logged_in? %>
      <%= link_to 'Add a Destination', new_destination_path %> /
      <%= link_to 'All Destinations', destinations_path %> /
-     <%= link_to 'Add a Comment', new_comment_path %> /
-     <%= link_to 'Logout', logout_path, method: 'delete'%>
+     <%= link_to 'Add a Comment', new_comment_path %> 
      <% else %>
      <%= link_to 'Signup', signup_path %> /
-     <%= link_to 'Login', login_path %>
+     <%= link_to 'Login', login_path %> 
      <% end %>
      </div>
 

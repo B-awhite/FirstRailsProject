@@ -1,18 +1,22 @@
 class CommentsController < ApplicationController
+   before_action :if_not_logged_in_redirect
    
    def index 
     if params[:destination_id] && @destination = Destination.find_by_id(params[:destination_id])
-      @comments = destination.comments
+      @comments = @destination.comments
     else 
+      @error = "Destination not found" if params[:destination_id]
       @comments = Comment.all 
+    end 
    end  
 
    def new 
     if params[:destination_id] && @destination = Destination.find_by_id(params[:destination_id])
         @comment = @destination.comments.build
     else 
-       @error = "Destination not found"
+       @error = "Destination not found" if params[:destination_id]
        @comment = Comment.new
+    end 
    end 
   
    def create

@@ -1,5 +1,5 @@
 <% if @comment.destination %>
-<h1>New Comment being added <%=@comment.destination.location%>!</h1>
+<h1>New Comment being added to <%=@comment.destination.location%></h1>
 <% else %>
 <h1> New Comment </h1>
 <% end %>
@@ -10,8 +10,8 @@
     <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
     <ul>
-      <% @comment.errors.each do |error| %>
-        <li><%= error.full_message %></li>
+      <% @comment.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
       <% end %>
     </ul>
   </div>
