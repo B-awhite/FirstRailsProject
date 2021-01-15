@@ -7,6 +7,9 @@
   <%= f.label :destination %>
   <%= f.collection_select :destination_id, Destination.all, :id, :location %>
 
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
   <%= f.submit %>
 
 <% end %>

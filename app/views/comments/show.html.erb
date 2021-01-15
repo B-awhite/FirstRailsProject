@@ -1,3 +1,7 @@
-<h1><%= @comment.content%> - <%= @comment.user.username %></h1>
+<h1><%= @comment.content%> - <%= @comment.user.username.capitalize %></h1>
+
+<% if @comment.user == current_user %>
+  <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+<% end %>
 
 <h4> See this destination: <%= link_to @comment.destination.location, destination_path(@comment.destination_id) %></h4>

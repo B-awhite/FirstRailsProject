@@ -1,1 +1,11 @@
-<h1>index</h1>
+<% if @destination %>
+  <h1>Comments for <%= @destination.location%></h1>
+<% else %>
+  <h1>All Comments</h1>
+<% end %>
+
+<ul>
+<% @comments.each do |c|%>
+  <li><%= c.user.username%> commented "<%= c.content%>" on this destination: <%= link_to c.destination.location, destination_path(c.destination_id) %></li>
+<% end %>
+</ul>

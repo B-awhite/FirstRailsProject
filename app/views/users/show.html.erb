@@ -1,11 +1,10 @@
 <h1> Welcome <%=@user.username.capitalize %></h1>
 
- <%= form_tag('/logout', method: 'delete') do %>
-
-   <%= submit_tag 'Logout' %>
-   
- <% end %>
-
+ <ul>
+<% @user.destinations.each do |d| %>
+  <li><%= link_to d.location, destination_path(d) %></li>
+<% end %>
+</ul>
  
      
 

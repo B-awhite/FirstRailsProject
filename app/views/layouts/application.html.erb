@@ -15,7 +15,12 @@
      <% if logged_in? %>
      <%= link_to 'Add a Destination', new_destination_path %> /
      <%= link_to 'All Destinations', destinations_path %> /
-     <%= link_to 'Add a Comment', new_comment_path %> 
+     <%= link_to 'Add a Comment', new_comment_path %> /
+     <%= link_to "Home", user_path(current_user)%> 
+     <%#= link_to "Logout", logout_path, method:"delete"%>
+     <%= form_tag('/logout', method: 'delete') do %>
+     <%= submit_tag 'Logout' %>
+     <% end %>
      <% else %>
      <%= link_to 'Signup', signup_path %> /
      <%= link_to 'Login', login_path %> 
