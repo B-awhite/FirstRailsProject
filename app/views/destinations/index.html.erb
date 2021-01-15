@@ -1,1 +1,7 @@
 <h1>Destinations</h1>
+
+<ul>
+<% @destinations.each do |d| %>
+  <li><%= link_to d.location, destination_path(d) %> - <%= d.comments.size%></li>
+<% end %>
+</ul>

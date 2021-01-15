@@ -2,7 +2,20 @@ class DestinationsController < ApplicationController
    before_action :if_not_logged_in_redirect
 
    def new 
-      @destination = Destination.new
+     if params[:user_id] && @user = User.find_by_id(params[:user_id])
+       @destination = @user.destinations.build 
+     else 
+       @destination = Destination.new
+     end 
+   end 
+
+   def index
+      if params[:user_id] && @user = User.find_by_id(params[:user_id])
+         @destinations = @user.destinations.alpha
+      else 
+        @error = "User not found"
+        @destinations = Destination.alpha
+      end 
    end 
 
    def create
