@@ -60,7 +60,7 @@ class DestinationsController < ApplicationController
    end 
 
    def destination_search
-      @destination = destination.find_by(id: params[:id])
+      @destination = Destination.find_by(id: params[:id])
       if !@destination
         flash[:message] = "destination not found"
         redirect_to destinations_path 
