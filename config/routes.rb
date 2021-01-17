@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/auth/:provider', to: 'sessions#create'
-  post '/auth/:provider/callback', to: 'session#create'
+  # post '/auth/:provider/callback', to: 'session#create'
 
   resources :destinations do 
     resources :comments, only: [:new, :create, :index]

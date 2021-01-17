@@ -1,12 +1,19 @@
 <h1><%= @destination.location %></h1>
 <h2><%= @destination.city %></h2>
 
-<h4>Added by: <%=link_to @destination.user.username, user_path(@destination.user)%></h4>
+<h4>Added by: <%=link_to @destination.user.username.capitalize, user_path(@destination.user)%></h4>
+
+<% if @destination.user == current_user %>
+<%= link_to "Edit Destination", edit_destination_path(@destination) %> |
+<%#<%= link_to "Delete Destination", delete_destination_path(@destination) %>
+<% end %>
 
 <p><%= link_to 'All Comments', destination_comments_path(@destination)%></p>
 <p><%= link_to 'Add new Comment', new_destination_comment_path(@destination)%></p>
 
 <h4>Comments:</h4>
 <% @destination.comments.each do |c| %>
-  <li><%= c.user.username%> commented "<%= link_to c.content, destination_comment_path(@destination, c)%>" </li>
+  <li><%= c.user.username.capitalize%> commented "<%= link_to c.content, comment_path(c)%>" </li>
 <% end %>
+
+

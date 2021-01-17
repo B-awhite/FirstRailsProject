@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
    private 
   
     def comment_params
-      params.require(:comment).permit(:location, :destination_id)
+      params.require(:comment).permit(:content, :destination_id)
     end
 
     def comment_search

@@ -6,6 +6,6 @@
 
 <ul>
 <% @comments.each do |c|%>
-  <li><%= c.user.username%> commented "<%= c.content%>" on this destination: <%= link_to c.destination.location, destination_path(c.destination_id) %></li>
+  <li><%= c.user.username.capitalize%> commented "<%= link_to c.content, comment_path(c) %>" on this destination: <%= link_to c.destination.location, destination_path(c.destination_id) %></li>
 <% end %>
 </ul>

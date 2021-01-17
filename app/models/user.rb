@@ -7,7 +7,7 @@ class User < ApplicationRecord
    validates_uniqueness_of :username 
 
    # def find_or_create_by(auth)
-   #    self.find_or_create_by(usernmae: auth[:info][:uid]) do |u|
+   #    self.find_or_create_by(username: auth[:info][:uid]) do |u|
    #       u.password = SecureRandom.hex
    #    end 
    # end 
