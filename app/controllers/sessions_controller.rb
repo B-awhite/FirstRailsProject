@@ -16,20 +16,21 @@ class SessionsController < ApplicationController
       end  
   end 
 
-  # def github
-  #   @user = User.find_or_create_by(username: auth.uid) do |u|
-  #     u.username = auth.extra.raw.info.login
-  #     u.password = SecureRandom.hex(12)
-  #   end 
-  #    if @user.valid?
-  #     session[:user_id] = @user.id
-  #     redirect_to user_path(@user)
-  #    end 
-  #   end 
-  #   @user = User.find_or_create_by(auth)
-  #   session[:user_id] = @user.id
-  #   redirect_to user_path(@user)
-  # end 
+  def github
+    binding.pry
+    @user = User.find_or_create_by(username: auth.uid) do |u|
+      u.username = auth.extra.raw.info.login
+      u.password = SecureRandom.hex(12)
+    end 
+     if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    #  end 
+    end 
+    @user = User.find_or_create_by(auth)
+    session[:user_id] = @user.id
+    redirect_to user_path(@user)
+  end 
   
   private 
 
