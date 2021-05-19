@@ -24,7 +24,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'therubyracer'
 gem 'javascript'
 gem 'omniauth', '~> 2.0.0'
-gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 
@@ -36,6 +35,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'dotenv-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

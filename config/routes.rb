@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # get '/auth/:provider', to: 'sessions#github'
   get '/auth/:provider/callback', to: 'sessions#github'
-
+# /destination/:id/comment/
   resources :destinations do 
     resources :comments, only: [:new, :create, :index]
   end 

@@ -16,38 +16,32 @@ class SessionsController < ApplicationController
       end  
   end 
 
-  def github 
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.username = auth[:extra][:raw_info][:login]
-      u.uid = auth[:uid]
-      u.provider = auth[:provider]
-      u.password = SecureRandom.hex(12)
-    end 
-    if @user.valid?
-      flash[:message] = "Successful Github signin"
-      session[:user_id] = @user.id
-      redirect_to destinations_path
-    else 
-      flash[:message] = "Invalid signup"
-      redirect_to login_path
-    end 
+  def github
+    user = User.create_from_github(auth)
+      if user.valid?
+        # @user.save
+          session[:user_id] = user.id
+          redirect_to users_path
+      else
+          flash[:message] = user.errors.full_messages.join(", ")
+          redirect_to login_path
+      end
   end 
 
 
-
   # def github
-    # @user = User.find_or_create_by(uid: auth['uid']) do |u|
-    #   u.username = auth['info']['nickname']
-    #   u.password = SecureRandom.hex
-    # end 
-    #  if @user.valid?
-    #   # session[:user_id] = @user.id
-    #   redirect_to user_path(@user)
-    #  else  
-    #   # flash[:message] = @user.errors.full_messages.join(', ')
-    #   # session[:user_id] = @user.id
-    #   redirect_to destinations_path
-    #  end 
+  #   user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
+  #     u.username = auth['extra']['raw_info']['login']
+  #     u.password = SecureRandom.hex
+  #   end 
+  #    if user.valid?
+  #     session[:user_id] = user.id
+  #     redirect_to destinations_path
+  #    else  
+  #      flash[:message] = user.errors.full_messages.join(', ')
+  #     # session[:user_id] = user.id
+  #     redirect_to login_path
+  #    end 
   # end 
   
   private 

@@ -11,14 +11,23 @@ class DestinationsController < ApplicationController
      end 
    end 
 
-   def index
-      if params[:user_id] && @user = User.find_by_id(params[:user_id])
-         @destinations = @user.destinations.alpha
-      else 
-        @error = "User not found"
-        @destinations = Destination.alpha if params[:user_id]
-      end 
-   end 
+  #  def index
+  #     if params[:user_id] && @user = User.find_by_id(params[:user_id])
+  #        @destinations = @user.destinations.alpha
+  #     else 
+  #       @error = "User not found"
+  #       @destinations = Destination.alpha if params[:user_id]
+  #     end 
+  #  end 
+
+  def index
+    if params[:user_id] && @user = User.find_by_id(params[:user_id])
+       @destinations = @user.destinations
+    else 
+       @error = "Destination not found" if params[:user_id]
+       @destinations = Destination.alpha 
+    end 
+  end  
 
    def create
       @destination = current_user.destinations.build(destination_params)
@@ -29,14 +38,14 @@ class DestinationsController < ApplicationController
       end 
    end 
 
-    def index
-     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-        @destinations = @user.destinations
-     else 
-        @error = "Destination not found" if params[:user_id]
-        @destinations = Destination.all 
-     end 
-   end  
+  #   def index
+  #    if params[:user_id] && @user = User.find_by_id(params[:user_id])
+  #       @destinations = @user.destinations
+  #    else 
+  #       @error = "Destination not found" if params[:user_id]
+  #       @destinations = Destination.alpha 
+  #    end 
+  #  end  
 
 
    def show 

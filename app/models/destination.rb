@@ -5,5 +5,5 @@ class Destination < ApplicationRecord
   validates_presence_of :location, :city
 
   scope :alpha, -> {order(:location)}
-  scope :most_comments, -> {left_joins(:comments).group('destinations.id').order('count(comments.destination.id) desc')}
+  scope :most_comments, -> {left_joins(:comments).group('destinations.id').order('count (comments.destination.id) desc')}
 end
