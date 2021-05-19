@@ -19,9 +19,8 @@ class SessionsController < ApplicationController
   def github
     user = User.create_from_github(auth)
       if user.valid?
-        # @user.save
           session[:user_id] = user.id
-          redirect_to users_path
+          redirect_to destinations_path
       else
           flash[:message] = user.errors.full_messages.join(", ")
           redirect_to login_path

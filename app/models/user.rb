@@ -3,11 +3,11 @@ class User < ApplicationRecord
    has_many :comments 
    has_many :commented_destinations, through: :comments, source: :destination
    has_secure_password
-   validates :username, :password, presence: true 
+   validates :username, presence: true 
    validates_uniqueness_of :username 
 
   def self.create_from_github(auth)
-    User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
+    User.find_or_create_by(username: auth[:extra][:raw_info][:login]) do |u|
       u.username = auth[:extra][:raw_info][:login]
       u.password = SecureRandom.hex(12)
     end
